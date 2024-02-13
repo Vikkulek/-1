@@ -1,0 +1,52 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Ввод длин сторон треугольника
+        double sideA, sideB, sideC;
+        do
+        {
+            Console.Write("Введите длину стороны A: ");
+        } while (!double.TryParse(Console.ReadLine(), out sideA) || sideA <= 0);
+
+        do
+        {
+            Console.Write("Введите длину стороны B: ");
+        } while (!double.TryParse(Console.ReadLine(), out sideB) || sideB <= 0);
+
+        do
+        {
+            Console.Write("Введите длину стороны C: ");
+        } while (!double.TryParse(Console.ReadLine(), out sideC) || sideC <= 0);
+
+        // Проверка возможности треугольника
+        if (sideA + sideB <= sideC || sideA + sideC <= sideB || sideB + sideC <= sideA)
+        {
+            Console.WriteLine("Треугольник с заданными сторонами не существует.");
+        }
+        else
+        {
+            // Определение вида треугольника
+            if (sideA == sideB && sideB == sideC)
+            {
+                Console.WriteLine("Равносторонний треугольник.");
+            }
+            else if (sideA == sideB || sideA == sideC || sideB == sideC)
+            {
+                Console.WriteLine("Равнобедренный треугольник.");
+            }
+            else
+            {
+                Console.WriteLine("Разносторонний треугольник.");
+            }
+
+            // Вычисление площади треугольника по формуле Герона
+            double p = (sideA + sideB + sideC) / 2;
+            double area = Math.Sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
+
+            Console.WriteLine($"Площадь треугольника: {area:F2}");
+        }
+    }
+}
