@@ -4,7 +4,7 @@ class Program
 {
     static void Main()
     {
-        // Ввод длин сторон треугольника
+        // Ввод длин сторон треугольниЧка
         double sideA, sideB, sideC;
         do
         {
